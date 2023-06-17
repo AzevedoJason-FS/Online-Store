@@ -1,7 +1,13 @@
+import Sidenav from "../components/Sidenav"
+import Topbar from "../components/Topbar"
+
 const LandingPage = () => {
     return(
-        <div>
-            <p>landing</p>
+        <div className="container">
+            <Sidenav />
+            <div className="main">
+               <Topbar />
+            </div>
         </div>
     )
 }
