@@ -109,3 +109,16 @@ a {
   height: 16px;
   border-radius: 25px;
 }
+
+.add-container{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amount-container{
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}

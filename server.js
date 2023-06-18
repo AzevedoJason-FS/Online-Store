@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 require('dotenv').config();
 const cors = require('cors');
+const productCtrl = require('./controllers/products')
 
 // Connect to MongoDB
 const connectMongo = async () => {
@@ -22,8 +23,8 @@ const connectMongo = async () => {
 app.use(cors())
 app.use(express.json());
 
-// app.get('/api/items', itemCtrl.getItems)
-// app.get('/api/leaderboard', leaderboardCtrl.getLeaderboard)
+app.get('/api/items', productCtrl.getItem)
+app.post('/api/new-item', productCtrl.newItem)
 
 //Connect to MongoDB before listening
 connectMongo().then(() => {
