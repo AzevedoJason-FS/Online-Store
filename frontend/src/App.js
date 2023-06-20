@@ -3,6 +3,7 @@ import { React, Suspense, lazy } from "react";
 import { ReactComponent as RollingLoader } from "./static/rolling.svg";
 import "./App.scss";
 
+
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 const App = () => {

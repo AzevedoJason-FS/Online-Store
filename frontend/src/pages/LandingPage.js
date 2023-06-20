@@ -8,8 +8,7 @@ import { config } from "../constants";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
+  const [products, setProduct] = useState({});
 
   const url = config.url.API_URL;
 
@@ -19,23 +18,48 @@ const LandingPage = () => {
     });
   }, []);
 
-  const handleQuantity = (type) => {
-    if (type === "dec") {
-      quantity > 1 && setQuantity(quantity - 1);
-    } else {
-      setQuantity(quantity + 1);
-    }
+  const handleClick = (product) => {
+    dispatch(addProduct({ product }));
   };
 
-  const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity }));
-  };
+  const openCart = () => {
+    
+  }
 
   return (
     <div className="container">
       <Sidenav />
       <div className="main">
         <Topbar />
+        <>
+          {products && products.length > 0 ? (
+            <div className="gallery">
+              {products &&
+                products.map((product) => {
+                  return (
+                    <div className="game_box" key={product._id}>
+                      <div className="img_box">
+                        <img id="img" src={product.img} alt={product.title} />
+                      </div>
+                      <div className="price_box">
+                        <p id="game_title">${product.price}</p>
+                      </div>
+                      <div>
+                      <button id="add_cart_btn" onClick={() => handleClick(product)}>
+                        Add to Cart
+                      </button>
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            <div className="rolling">
+              {/* <Rolling /> */}
+              <h2 id="loading">Loading..</h2>
+            </div>
+          )}
+        </>
       </div>
     </div>
   );
