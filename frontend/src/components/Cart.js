@@ -5,7 +5,7 @@ import { BiBasket } from "react-icons/bi";
 const Cart = () => {
   const quantity = useSelector((state) => state.cart.quantity);
   const productImg = useSelector((state) => state.cart.products);
-  const total = useSelector((state) => state.cart.total)
+  const total = useSelector((state) => state.cart.total);
   const [hidden, setHide] = useState(true);
 
   return (
@@ -33,7 +33,10 @@ const Cart = () => {
                 </div>
               );
             })}
+          <div className="total_checkout">
             <h2 id="cart_total">Total: ${total}</h2>
+            <button id="checkout_cart_btn">Checkout</button>
+          </div>
         </div>
       ) : (
         <></>
